@@ -1,0 +1,832 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer localhost AdventureWorks2022",
+        "connectionString": "Provider=SQLOLEDB;Data Source=.;Initial Catalog=AdventureWorks2022;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "ShipMethod",
+        "columns": [
+          {
+            "name": "ShipMethodID",
+            "dataType": "int64",
+            "sourceColumn": "ShipMethodID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ShipBase",
+            "dataType": "decimal",
+            "sourceColumn": "ShipBase",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "ShipRate",
+            "dataType": "decimal",
+            "sourceColumn": "ShipRate",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "rowguid",
+            "dataType": "string",
+            "sourceColumn": "rowguid",
+            "sourceProviderType": "Guid"
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ShipMethod",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Purchasing].[ShipMethod].*   FROM [Purchasing].[ShipMethod] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Purchasing].[ShipMethod].*   FROM [Purchasing].[ShipMethod] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "ShipMethod"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Purchasing"
+          }
+        ]
+      },
+      {
+        "name": "CreditCard",
+        "columns": [
+          {
+            "name": "CreditCardID",
+            "dataType": "int64",
+            "sourceColumn": "CreditCardID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CardType",
+            "dataType": "string",
+            "sourceColumn": "CardType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CardNumber",
+            "dataType": "string",
+            "sourceColumn": "CardNumber",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ExpMonth",
+            "dataType": "int64",
+            "sourceColumn": "ExpMonth",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "ExpYear",
+            "dataType": "int64",
+            "sourceColumn": "ExpYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CreditCard",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Sales].[CreditCard].*   FROM [Sales].[CreditCard] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Sales].[CreditCard].*   FROM [Sales].[CreditCard] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "CreditCard"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Sales"
+          }
+        ]
+      },
+      {
+        "name": "CurrencyRate",
+        "columns": [
+          {
+            "name": "CurrencyRateID",
+            "dataType": "int64",
+            "sourceColumn": "CurrencyRateID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CurrencyRateDate",
+            "dataType": "dateTime",
+            "sourceColumn": "CurrencyRateDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "FromCurrencyCode",
+            "dataType": "string",
+            "sourceColumn": "FromCurrencyCode",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ToCurrencyCode",
+            "dataType": "string",
+            "sourceColumn": "ToCurrencyCode",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "AverageRate",
+            "dataType": "decimal",
+            "sourceColumn": "AverageRate",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "EndOfDayRate",
+            "dataType": "decimal",
+            "sourceColumn": "EndOfDayRate",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CurrencyRate",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Sales].[CurrencyRate].*   FROM [Sales].[CurrencyRate] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Sales].[CurrencyRate].*   FROM [Sales].[CurrencyRate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "CurrencyRate"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Sales"
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PersonID",
+            "dataType": "int64",
+            "sourceColumn": "PersonID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "StoreID",
+            "dataType": "int64",
+            "sourceColumn": "StoreID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TerritoryID",
+            "dataType": "int64",
+            "sourceColumn": "TerritoryID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AccountNumber",
+            "dataType": "string",
+            "sourceColumn": "AccountNumber",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "rowguid",
+            "dataType": "string",
+            "sourceColumn": "rowguid",
+            "sourceProviderType": "Guid"
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customer",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Sales].[Customer].*   FROM [Sales].[Customer] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Sales].[Customer].*   FROM [Sales].[Customer] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Customer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Sales"
+          }
+        ]
+      },
+      {
+        "name": "SalesOrderDetail",
+        "columns": [
+          {
+            "name": "SalesOrderID",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesOrderDetailID",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderDetailID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CarrierTrackingNumber",
+            "dataType": "string",
+            "sourceColumn": "CarrierTrackingNumber",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "OrderQty",
+            "dataType": "int64",
+            "sourceColumn": "OrderQty",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SpecialOfferID",
+            "dataType": "int64",
+            "sourceColumn": "SpecialOfferID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPrice",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "UnitPriceDiscount",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPriceDiscount",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "LineTotal",
+            "dataType": "double",
+            "sourceColumn": "LineTotal",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "rowguid",
+            "dataType": "string",
+            "sourceColumn": "rowguid",
+            "sourceProviderType": "Guid"
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesOrderDetail",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Sales].[SalesOrderDetail].*   FROM [Sales].[SalesOrderDetail] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Sales].[SalesOrderDetail].*   FROM [Sales].[SalesOrderDetail] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SalesOrderDetail"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Sales"
+          }
+        ]
+      },
+      {
+        "name": "SalesOrderHeader",
+        "columns": [
+          {
+            "name": "SalesOrderID",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "RevisionNumber",
+            "dataType": "int64",
+            "sourceColumn": "RevisionNumber",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "DueDate",
+            "dataType": "dateTime",
+            "sourceColumn": "DueDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "ShipDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ShipDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Status",
+            "dataType": "int64",
+            "sourceColumn": "Status",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "OnlineOrderFlag",
+            "dataType": "boolean",
+            "sourceColumn": "OnlineOrderFlag",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "string",
+            "sourceColumn": "SalesOrderNumber",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PurchaseOrderNumber",
+            "dataType": "string",
+            "sourceColumn": "PurchaseOrderNumber",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "AccountNumber",
+            "dataType": "string",
+            "sourceColumn": "AccountNumber",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesPersonID",
+            "dataType": "int64",
+            "sourceColumn": "SalesPersonID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TerritoryID",
+            "dataType": "int64",
+            "sourceColumn": "TerritoryID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BillToAddressID",
+            "dataType": "int64",
+            "sourceColumn": "BillToAddressID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShipToAddressID",
+            "dataType": "int64",
+            "sourceColumn": "ShipToAddressID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShipMethodID",
+            "dataType": "int64",
+            "sourceColumn": "ShipMethodID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CreditCardID",
+            "dataType": "int64",
+            "sourceColumn": "CreditCardID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CreditCardApprovalCode",
+            "dataType": "string",
+            "sourceColumn": "CreditCardApprovalCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CurrencyRateID",
+            "dataType": "int64",
+            "sourceColumn": "CurrencyRateID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SubTotal",
+            "dataType": "decimal",
+            "sourceColumn": "SubTotal",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TaxAmt",
+            "dataType": "decimal",
+            "sourceColumn": "TaxAmt",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Freight",
+            "dataType": "decimal",
+            "sourceColumn": "Freight",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TotalDue",
+            "dataType": "decimal",
+            "sourceColumn": "TotalDue",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Comment",
+            "dataType": "string",
+            "sourceColumn": "Comment",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "rowguid",
+            "dataType": "string",
+            "sourceColumn": "rowguid",
+            "sourceProviderType": "Guid"
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesOrderHeader",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Sales].[SalesOrderHeader].*   FROM [Sales].[SalesOrderHeader] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Sales].[SalesOrderHeader].*   FROM [Sales].[SalesOrderHeader] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SalesOrderHeader"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Sales"
+          }
+        ]
+      },
+      {
+        "name": "SalesPerson",
+        "columns": [
+          {
+            "name": "BusinessEntityID",
+            "dataType": "int64",
+            "sourceColumn": "BusinessEntityID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TerritoryID",
+            "dataType": "int64",
+            "sourceColumn": "TerritoryID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesQuota",
+            "dataType": "decimal",
+            "sourceColumn": "SalesQuota",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Bonus",
+            "dataType": "decimal",
+            "sourceColumn": "Bonus",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "CommissionPct",
+            "dataType": "decimal",
+            "sourceColumn": "CommissionPct",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "SalesYTD",
+            "dataType": "decimal",
+            "sourceColumn": "SalesYTD",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "SalesLastYear",
+            "dataType": "decimal",
+            "sourceColumn": "SalesLastYear",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "rowguid",
+            "dataType": "string",
+            "sourceColumn": "rowguid",
+            "sourceProviderType": "Guid"
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ModifiedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesPerson",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Sales].[SalesPerson].*   FROM [Sales].[SalesPerson] ",
+              "dataSource": "SqlServer localhost AdventureWorks2022"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Sales].[SalesPerson].*   FROM [Sales].[SalesPerson] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SalesPerson"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Sales"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "e160f124-ce53-4728-b240-00b1b666208d",
+        "fromTable": "SalesOrderDetail",
+        "fromColumn": "SalesOrderID",
+        "toTable": "SalesOrderHeader",
+        "toColumn": "SalesOrderID"
+      },
+      {
+        "name": "ba7f74d9-fd90-4307-915a-a61a5b7919d6",
+        "fromTable": "SalesOrderHeader",
+        "fromColumn": "ShipMethodID",
+        "toTable": "ShipMethod",
+        "toColumn": "ShipMethodID"
+      },
+      {
+        "name": "0ad34528-2bd5-464f-93df-4418a47700e8",
+        "fromTable": "SalesOrderHeader",
+        "fromColumn": "CreditCardID",
+        "toTable": "CreditCard",
+        "toColumn": "CreditCardID"
+      },
+      {
+        "name": "1430a748-85b4-468e-8866-f014715442b6",
+        "fromTable": "SalesOrderHeader",
+        "fromColumn": "CurrencyRateID",
+        "toTable": "CurrencyRate",
+        "toColumn": "CurrencyRateID"
+      },
+      {
+        "name": "dc6b30d4-de45-445f-9bbc-14f99aedfa84",
+        "fromTable": "SalesOrderHeader",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "26867faf-e400-4e90-bd84-9ddc77094a1b",
+        "fromTable": "SalesOrderHeader",
+        "fromColumn": "SalesPersonID",
+        "toTable": "SalesPerson",
+        "toColumn": "BusinessEntityID"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
